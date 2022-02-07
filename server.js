@@ -4,6 +4,7 @@ const path = require("path");
 
 //custom imports
 const userRoutes = require("./routes/users");
+const adminRoutes = require("./routes/admin");
 
 const app = express(); //instance of express created
 const port = 9000;
@@ -11,6 +12,7 @@ const port = 9000;
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use("/admin", adminRoutes);
 app.use(userRoutes);
 
 app.use((req, res, next) => {
@@ -32,6 +34,10 @@ app.get("/redirect", (req, res, next) => {
   console.log(req.body);
   res.redirect("/");
 });
+
+// app.use((req, res) => {
+//   res.status(404).send("NAN");
+// });
 
 app.listen(port, () => {
   console.log(`started listening on port ${port}`);
