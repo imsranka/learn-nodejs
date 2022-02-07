@@ -35,9 +35,11 @@ app.get("/redirect", (req, res, next) => {
   res.redirect("/");
 });
 
-// app.use((req, res) => {
-//   res.status(404).send("NAN");
-// });
+// wrong route handling
+// always write at the end
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+});
 
 app.listen(port, () => {
   console.log(`started listening on port ${port}`);
