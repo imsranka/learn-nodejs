@@ -1,6 +1,8 @@
 const express = require("express");
 const path = require("path");
 
+const rootDir = require("../helpers/path");
+
 const router = express.Router();
 
 //chaining methods to a single route
@@ -9,7 +11,7 @@ router
   .get(function (req, res) {
     // res.send("Getting the user you asked for....");
     // res.redirect("/form.html"); OR
-    res.sendFile(path.join(__dirname, "../views/form.html"));
+    res.sendFile(path.join(rootDir, "views", "form.html"));
   })
   .post(function (req, res) {
     console.log(req.body);
