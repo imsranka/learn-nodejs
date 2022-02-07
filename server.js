@@ -9,7 +9,7 @@ const adminRoutes = require("./routes/admin");
 const app = express(); //instance of express created
 const port = 9000;
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "views")));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/admin", adminRoutes);

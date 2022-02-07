@@ -9,7 +9,7 @@ router
   .get(function (req, res) {
     // res.send("Getting the user you asked for....");
     // res.redirect("/form.html"); OR
-    res.sendFile(path.join(__dirname, "../public/form.html"));
+    res.sendFile(path.join(__dirname, "../views/form.html"));
   })
   .post(function (req, res) {
     console.log(req.body);
