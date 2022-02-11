@@ -1,14 +1,11 @@
 const express = require("express");
 const path = require("path");
+const adminController = require("../controllers/admin");
 
 const router = express.Router();
 
-router.get("/info", (req, res) => {
-  res.send("Fetching info");
-});
+router.get("/info", adminController.getInfo);
 
-router.post("/add-info", (req, res) => {
-  res.send("Added the data");
-});
+router.post("/add-info", adminController.addInfo);
 
 module.exports = router;

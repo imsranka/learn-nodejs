@@ -5,6 +5,7 @@ const path = require("path");
 //custom imports
 const userRoutes = require("./routes/users");
 const adminRoutes = require("./routes/admin");
+const errorController = require("./controllers/error");
 
 const app = express(); //instance of express created
 const port = 9000;
@@ -37,9 +38,7 @@ app.get("/redirect", (req, res, next) => {
 
 // wrong route handling
 // always write at the end
-app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
-});
+app.use(errorController.get404);
 
 app.listen(port, () => {
   console.log(`started listening on port ${port}`);

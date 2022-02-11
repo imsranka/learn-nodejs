@@ -5,7 +5,11 @@ const rootDir = require("../helpers/path");
 
 const router = express.Router();
 
-router.use((req, res) => console.log("hi"));
+router.use((req, res, next) => {
+  console.log("hi");
+  next();
+});
+
 //chaining methods to a single route
 router
   .route("/users")
