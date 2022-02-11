@@ -1,13 +1,9 @@
 const fs = require("fs");
 const path = require("path");
 
-const getUsersFromFile = (cb) => {
-  const p = path.join(
-    path.dirname(require.main.filename),
-    "data",
-    "users.json"
-  );
+const p = path.join(path.dirname(require.main.filename), "data", "users.json");
 
+const getUsersFromFile = (cb) => {
   fs.readFile(p, "utf8", (err, data) => {
     if (err) {
       console.log("here");
