@@ -37,4 +37,17 @@ module.exports = class User {
   static getAll(cb) {
     getUsersFromFile(cb);
   }
+
+  static getUserInfo(id, cb) {
+    let f;
+    getUsersFromFile((user) => {
+      f = user.find((u) => u.id === id);
+      console.log(f);
+      if (f) {
+        return cb(f);
+      } else {
+        return null;
+      }
+    });
+  }
 };
