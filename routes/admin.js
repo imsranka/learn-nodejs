@@ -8,4 +8,6 @@ router.get("/info", adminController.getInfo);
 
 router.post("/add-info", adminController.addInfo);
 
+router.get("/get-user/:id", adminController.getSingleUser);
+
 module.exports = router;
