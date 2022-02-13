@@ -1,28 +1,35 @@
 const fs = require("fs");
 const path = require("path");
 
-const p = path.join(path.dirname(require.main.filename), "data", "users.json");
+const p = path.join(
+  path.dirname(process.mainModule.filename),
+  "data",
+  "users.json"
+);
 
 const getUsersFromFile = (cb) => {
   fs.readFile(p, "utf8", (err, data) => {
     if (err) {
-      console.log("here");
-      return cb([]);
+      cb([]);
     } else {
+      // if (data) {
       cb(JSON.parse(data));
+      // } else cb([]); //handle empty file
     }
-  }).then((e) => console.log(e, "error"));
+  });
+  // .then((e) => console.log(e, "error"));
 };
 module.exports = class User {
-  constructor(name) {
+  constructor(name, id) {
     this.name = name;
+    this.id = id;
   }
 
   save() {
     getUsersFromFile((users) => {
       users.push(this);
       fs.writeFile(p, JSON.stringify(users), (err) => {
-        console.log(err, "ll");
+        console.log(err, "error");
       });
     });
   }
